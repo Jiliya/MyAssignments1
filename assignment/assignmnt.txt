@@ -1,0 +1,97 @@
+use db_exam
+
+    db.examtbl.insert({accNo:1,balance:20000,customerDetails:{cid:1,cname:"rajhill",street:"ekm",city:"kerala",lAmt:200,dAmt:18000},
+    Bdetails:{bname:"b2",bCity:"pune",bAssets:100000}})
+    
+    
+    
+    db.examtbl.insert({accNo:2,balance:30000,customerDetails:{cid:2,cname:"jia",street:"manapakkma",city:"chennai",lAmt:0,dAmt:30000},
+    Bdetails:{bname:"b3",bCity:"Hyderbad",bAssets:200000}})
+    
+    
+    db.examtbl.insert({accNo:3,balance:50000,customerDetails:{cid:3,cname:"jliya",street:"calicut",city:"hyderbad",lAmt:4000,dAmt:46000},
+    Bdetails:{bname:"b4",bCity:"pune",bAssets:400000}})
+    
+    
+    db.examtbl.insert({accNo:4,balance:340000,customerDetails:{cid:4,cname:"mahil",street:"mumbai",city:"chennai",lAmt:4000,dAmt:30000},
+    Bdetails:{bname:"b5",bCity:"chennai",bAssets:200000}})
+    
+    
+    db.examtbl.insert({ accNo:5,balance:30000,customerDetails:{cid:5,cname:"neethu",street:"mohali",city:"chennai",lAmt:800,dAmt:22000},
+    Bdetails:{bname:"b6",bCity:"kerala",bAssets:900000}})
+    
+   
+    db.examtbl.insert({accNo:6,balance:30000,customerDetails:{cid:6,cname:"jian",street:"manapakkma",city:"kerala",lAmt:3100,dAmt:26900},
+    Bdetails:{bname:"b7",bCity:"hyderbad",bAssets:1200000}})
+    
+    
+   
+    db.examtbl.insert({ accNo:7,balance:900000,customerDetails:{cid:7,cname:"abc",street:"muglivakm",city:"hyderbad",lAmt:0,dAmt:90000},
+    Bdetails:{bname:"b8",bCity:"chennai",bAssets:60000}})
+      
+    db.examtbl.insert({ accNo:9,balance:800,customerDetails:{cid:9,cname:"abhi",street:"muglivakm",city:"hyderbad",lAmt:0,dAmt:800},
+    Bdetails:{bname:"b8",bCity:"chennai",bAssets:60000}})
+   
+   db.examtbl.insert({ accNo:10,balance:8000,customerDetails:{cid:10,cname:"abhijith",street:"mahill",city:"hyderbad",lAmt:0,dAmt:8000},
+    Bdetails:{bname:"b8",bCity:"chennai",bAssets:30000}})
+    db.examtbl.insert({ accNo:12,balance:89000,customerDetails:{cid:12,cname:"joicy",street:"mahill",city:"hyderbad",lAmt:0,dAmt:6000},
+    Bdetails:{bname:"b8",bCity:"pune",bAssets:30000}})
+    db.examtbl.insert({ accNo:13,balance:9000,customerDetails:{cid:13,cname:"jomol",street:"mahill",city:"hyderbad",lAmt:89000,dAmt:6000},
+    Bdetails:{bname:"b8",bCity:"pune",bAssets:30000}})
+   
+   db.examtbl.remove({_id:10})
+    
+    db.examtbl.find();         
+
+
+//	1.Choose appropriate primary key(s)
+        primary key:accNo
+    //	2.Create index on primary key(s)
+         db.examtbl.ensureIndex({accNo:1},{unique:true})
+    //	3.The names and cities of all borrowers
+    
+       db.examtbl.find({"customerDetails.lAmt":{$gt:0}},{ "customerDetails.cname":1,"customerDetails.city":1}).pretty()
+  //4.The names of borrowers who live in Chennai. 
+                db.examtbl.find({$and:[{
+                            "customerDetails.city":"chennai"},
+                            {"customerDetails.lAmt":{$gt:0}}]},{"customerDetails.cname":1})
+        
+   //5.Find the name, city, and assets of the branch with the largest assets. 
+
+     db.examtbl.find({},{"customerDetails.cname":1,"customerDetails.city":1,"Bdetails.bAssets":1}).sort({"Bdetails.bAssets":-1}).limit(1)
+   
+   //6.The names and cities of customers who have a loan at Pune branch
+
+     db.examtbl.find({$and:[{"Bdetails.bCity":"pune"},
+                          { "customerDetails.lAmt" :{$gt:0}}]},{"customerDetails.cname":1,"customerDetails.city":1}).pretty();
+                           
+   //7.Find the number of accounts with balances between 700 and 900.
+      db.examtbl.find({$and:
+                      [{balance:{$gte:700}},{balance:{$lte:900}}]}).count();  
+     
+     //8.The names of customers with both loan and depoit accounts and loans at Pune branch. 
+     db.examtbl.find({$and:
+         [{"customerDetails.lAmt":{$gt:0}},{"customerDetails.dAmt":{$gt:0}},{"Bdetails.bCity":"pune"}]},
+         {"customerDetails.cname":1}).pretty();
+     //	9.The customers whose total loans are greater than the total amount in their bank accounts    
+        
+        db.Bank.find("this.customerDetails.lAmt > this.balance")
+      //10.The names of customers living on streets with names ending in "Hill".  
+     db.examtbl.find({"customerDetails.street":{$regex:/hill$/}},{"customerDetails.cname":1})
+     
+     //11.The names of customers with an account but not a loan at Pune branch. 
+      db.examtbl.find({$and:[{"Bdetails.bCity":"pune"},{"customerDetails.lAmt":{$lte:0}}]},{"customerDetails.cname":1}).pretty()
+    //12. The names of branches whose assets are greater than the assets of all branches in Hyderabad. 
+     db.examtbl.find({})
+     //13.The branch with the largest average balance
+     db.examtbl.aggregate([{$group:{_id:"$bname" ,total:{$avg:"$Bdetails.bAssets"}}}],{}).sort(total:1).limit(1)
+     
+     db.newemp.aggregate([{$group:{_id:"$Dept" ,total:{$avg:"$bpay"}}}])
+     
+     // 14.The branch name and number of customers for each branch
+     
+     db.examtbl.aggregate([{$group:{_id:"$bname" ,total:{$sum:"$cid"}}}]).pretty()
+     
+     //15.Deposit an additional Rs. 20,000 to Ram’s bank account.
+     db.examtbl.update({"customerDetails.cname":"Ram"},{balance:{$inc:20000}}})}
+
