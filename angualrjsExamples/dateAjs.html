@@ -1,0 +1,25 @@
+
+<!DOCTYPE  html>
+<html>
+<head>
+<script src="js/angular.min.js">
+</script>
+</head>
+<body ng-App="" >
+<!--<input type="text" ng-model="color" style="background-color:{{color}}"/>
+<input type="button" value="set color" ng-click="myStyle={color:'red'}">
+<input type="button" value="clear" ng-click="myStyle={}">
+mark 1:{{mark[0]}}  <br>
+mark 2:{{mark[1]}}  <br>
+mark 3:{{mark[2]}}  <br>-->
+
+<input type="date" ng-model="joinDate"/><br>
+<!--date:{{joinDate|date:"dd.MM.y"}}-->
+date:{{joinDate|date:'medium'}}                     <=medium<br>
+date:{{joinDate|date:'yyyy-MM-dd HH:mm:ss Z'}}      <=yyyy-MM-dd HH:mm:ss Z<br>
+date:{{joinDate|date:'MM/dd/yyyy @ h:mma'}}         <='MM/dd/yyyy @ h:mma'       <br>        
+date:{{joinDate|date:"MM/dd/yyyy 'at' h:mma"}}      <= "MM/dd/yyyy 'at' h:mma"  <br>
+date:{{joinDate|date:'fullDate'}}                   <=fullDate<br>
+<body>
+</html>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/angular.min.js" ></script>
+<script type="text/javascript">
+var app=angular.module("customFilterApp",[]);
+app.controller("customFilterCtrl",function($scope){	
+$scope.name="044-3455";
+});
+app.filter('convertUpper',function(){
+	return function(name){
+		var fact=1;
+		for(var i=1;i<=name;i++)
+		{
+			fact =fact* i;
+		}
+		return fact;
+	};
+});
+</script>
+</head>
+<body ng-App="customFilterApp" ng-controller="customFilterCtrl">
+	<p>
+		{{name|convertUpper}}
+	</p>
+</body>
+</html>

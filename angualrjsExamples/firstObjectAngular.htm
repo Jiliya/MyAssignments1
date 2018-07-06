@@ -1,0 +1,59 @@
+
+<!DOCTYPE  html>
+<html>
+<head>
+	<style>
+	table,tr,td{
+		border:1px solid #006666;
+	}
+	th
+	{
+		border:1px solid #660033;
+	}
+</style>
+<script src="js/angular.min.js">
+</script>
+</head>
+<body ng-App="" ng-init="employee=[{empId:'1001',empName:'ram',basicpay:1000},{empId:'1002',empName:'ramu',basicpay:1000}]"/>
+<table align="center">
+
+	<tr>
+		<th>
+			emplyee id
+		</th>
+		<th>
+			employee name
+		</th>
+		<th>
+			basic pay
+		</th>
+	</tr>
+	<tr>
+		<td>{{employee[0].empId}}
+		</td>
+		<td>{{employee[0].empName}}
+		</td>
+		<td>{{employee[0].basicpay}}
+		</td>
+	</tr>
+
+	<tr>
+		<td>{{employee[1].empId}}
+		</td>
+		<td>{{employee[1].empName}}
+		</td>
+		<td>{{employee[1].basicpay}}
+		</td>
+	</tr>
+	</table>
+
+<!--<input type="text" ng-model="color" style="background-color:{{color}}"/>
+<input type="button" value="set color" ng-click="myStyle={color:'red'}">
+<input type="button" value="clear" ng-click="myStyle={}">
+mark 1:{{mark[0]}}  <br>
+mark 2:{{mark[1]}}  <br>
+mark 3:{{mark[2]}}  <br>-->
+
+<body>
+</html>
+

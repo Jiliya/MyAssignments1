@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/angular.min.js" ></script>
+<script type="text/javascript">
+var app=angular.module("customFilterApp",[]);
+app.controller("customFilterCtrl",function($scope){	
+$scope.values=[10,40,30];
+//$scope.statues;
+});
+app.filter('descending',function(){
+	return function(values,statues){
+		if(statues==true)
+		{
+		var res=values.sort();
+		return res;
+	     }
+	    // if(statues==false)
+	    if(statues==false|statues==undefined)
+	     {
+	     var res=values.sort();
+		var res1=res.reverse();
+		return res1;
+	    }
+	   // return res1;
+	};
+});
+</script>
+</head>
+<body ng-App="customFilterApp" ng-controller="customFilterCtrl">
+	<!--ng-model="values:'statues'", -->
+	<p  ng-repeat="num in values |descending:true">
+		{{num}}
+	</p>
+</body>
+</html>

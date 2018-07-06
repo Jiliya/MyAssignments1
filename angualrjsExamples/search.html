@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title><script src="js/angular.min.js" ></script>
+	<script >
+		
+var app=angular.module("myModule",[])
+.controller("myController",function($scope)
+{
+	var technologies=[{name:"asp",likes:0,dilikes:0},{name:"java",likes:0,dilikes:0},{name:"c#",likes:0,dilikes:0}]
+
+;
+$scope.technologies=technologies;
+
+});
+
+
+	</script>
+	
+</head>
+</head>
+<body ng-app="myModule">
+	<div ng-controller="myController">
+		<input type="text" placeholder="searchhere" ng-model="searchText">
+		<input type="checkbox" ng-model="hidesal">
+		<TABLE>
+			<thead><TR>
+				<th>name</th>
+				<th>like</th>
+				<th ng-hide="hidesal">dislike</th>
+				<th >like/dislike</th></TR>
+			</thead>
+			<tbody>
+				<tr ng-repeat="tech in technologies| filter :searchText">
+					<td>{{tech.name}}</td>
+					<td>{{tech.likes}}</td>
+					<td ng-hide="hidesal">{{tech.dilikes}}</td>
+					
+			</tbody>
+
+
+			</TABLE>
+
+		</div>
+</body>
+</html>

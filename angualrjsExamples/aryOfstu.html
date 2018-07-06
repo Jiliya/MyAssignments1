@@ -1,0 +1,73 @@
+<!--<!DOCTYPE html>
+<html >
+	<head>
+	
+		<script src="js\angular.min.js"> </script>
+				<script>
+		var app=angular.module("myApp",[]);
+
+		app.controller("myCtrl",function($scope){
+	         //  $scope.marks=[10,20,30];
+			$scope.fact=function()
+			{ 
+				var fact=1;
+				for(var i=2;i<=$scope.value;i++)
+				{
+					fact=fact*i;
+				}
+
+				//var avg=sum/$scope.marks.length;
+				$scope.result=fact;
+
+				return fact;
+			}
+		});	
+		 
+		</script>
+	</head>
+	<body ng-App="myApp" ng-controller="myCtrl"  >
+   Enter the value <input type="text" ng-model="value">
+   
+    <div>
+   <input type="button" value="clacualte" ng-click="fact()"/>
+    </div>
+   Factorial is <input type="text" ng-model="result">
+	</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html >
+	<head>
+	<style>
+	body
+	{
+		background-color: lightblue;
+	 color: black;
+	 font-style: italic;
+	 font-weight: bold;
+
+	}
+   </style>
+		<script src="js\angular.min.js"> </script>
+		<script type="text/javascript" src="exterlArrayofstu.js"></script>	
+	</head>
+	<body ng-App="myApp" ng-controller="myCtrl"  >
+		
+		<h1 align="center" >My details</h1>
+		
+		Name:
+		<div ng-repeat="s in student">
+		{{s.name}}</div>
+	<div ng-repeat="s in student.subjects.marks">
+ 
+        {{s}}
+
+   
+    	
+  <!-- total : {{s.total()}}</div>
+       
+   average: {{s.avereage()}}-->
+    </div>
+	</body>
+</html>
