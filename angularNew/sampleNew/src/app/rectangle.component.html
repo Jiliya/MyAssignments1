@@ -1,0 +1,18 @@
+
+
+
+<h1 align="center">TO DO LIST</h1>
+ <table align="center">
+    <tr>
+    <td>
+<input  type="text" [(ngModel)]="add"></td>
+<td><input type="button" (click)="addTask()" value="add" class="btn"/></td></tr>
+<tr>
+<td>
+    <h3 align="center">items</h3>
+<p *ngFor="let value of arr; let i=index">
+<!--{{i}}-->
+    {{value}}
+    <input type="button" value="Delete" (click)="RemoveTask(value)" class="btn">   </p></td></tr>
+    
+    </table>
