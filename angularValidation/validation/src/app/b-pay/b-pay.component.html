@@ -1,0 +1,25 @@
+
+  <form #f="ngForm" (ngSubmit)="login(f)">
+    <h1 align="center">Employee Details</h1>
+    <table align="center" id="corner">
+      <tr><td>
+      <label>EmployeeId:</label></td>
+     <td> <input type="text" name="eid"  [(ngModel)]="eid" #teid="ngModel" required/><br></td></tr>
+     <div *ngIf="teid.touched && teid.invalid "class="error">please Enter id</div>
+     <tr><td><label>Name</label></td>
+        <td> <input type="text" name="name" [(ngModel)]="eName" #tName="ngModel" required/><br></td></tr>
+        <div *ngIf="tName.touched && tName.invalid "class="error">please Enter user name</div>
+     
+        <tr><td> <label>BasicPay</label></td>
+        <td><input type="number" name="basicPay" [(ngModel)]="basicPay"  #tbPay="ngModel" required/><br></td></tr>
+        <div *ngIf="tbPay.touched && tbPay.invalid "class="error">please Enter user name</div>
+      
+        <tr><td colspan="2"> <input type="button" (click)="getNetpay()" value="calculate netpay" id="btn"/><br></td></tr>
+        <div *ngIf="f.invalid && f.touched"class="error">form is not valid</div>
+        <tr> <td><label>NetPay</label></td>
+      <td><input type="number" name="netPay" [(ngModel)]="nPay"/><br></td></tr>
+     <!-- <div *ngIf="f.invalid && f.touched"class="error">form is not valid</div>-->
+    </table>
+
+  </form>
+

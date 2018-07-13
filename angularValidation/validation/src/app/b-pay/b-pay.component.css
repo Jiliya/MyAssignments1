@@ -1,0 +1,16 @@
+table{
+    border:2px solid black;
+}
+#corner {
+    border-radius: 15px / 50px;
+    background: #85C1E9  ;
+    padding: 20px; 
+    width: 300px;
+    height: 150px; 
+}
+#btn
+{ border-radius: 100px / 100px;
+}
+body{
+    background-image: url("D:\img1.jpg");
+}

@@ -1,0 +1,102 @@
+<h1 align="center">Registration Form</h1>
+
+  <form #f="ngForm" (ngSubmit)="login(f)">
+      
+        
+    <table align="center" id="corner">
+   <tr><td>User Name:</td> 
+   <td> <input type="text"  name="userName" [(ngModel)]="userName" #tuserName="ngModel" required minlength="3"/></td> </tr> 
+  <br>
+  <div *ngIf="tuserName.touched && tuserName.invalid ">
+  <div *ngIf="tuserName.errors.required">name is not Entered</div>
+  <div *ngIf="tuserName.errors.minlength">user name sholuld be atleast three chracter</div>
+</div>
+<tr><td>Passowrd:</td> 
+  <td>  <input type="text"  name="pwd" [(ngModel)]="pwd" #tpwd="ngModel" required pattern="[a-zA-Z][a-zA-Z0-9]*"/></td> </tr>
+    <div *ngIf="tpwd.touched && tpwd.invalid ">
+      <div *ngIf="tpwd.errors.required">password not ended</div>
+      <div *ngIf="tpwd.errors.pattern">Pasword Pattern not  mactching</div>
+
+    </div> 
+  
+ <tr><td>
+  Date Of Birth</td>
+   <td> <input type="date"  name="dateF" [(ngModel)]="dateF" #tdateF="ngModel" required />
+  <br><tr><td>
+  Email:
+  <input type="email"  name="email" [(ngModel)]="email" #temail="ngModel" required  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+  <div *ngIf="temail.touched &&  temail.pattern.invalid" class="error">email is not valid</div>
+  
+  Gender:
+    female<input type="radio"  name="genderR" checked  />
+  male    <input   type="radio" name="genderR" />
+   Country
+   <select>
+      <option value="India">India</option>
+      <option value="America">America</option>
+      <option value="Canda">Canda</option>
+      <option value="Ireland">Ireland</option>
+    </select>
+    Qualification
+     
+      <input type="checkbox" name="quali" [(ngModel)]="quali1" #tquali1="ngModel" checked  />Graduate
+  
+   
+  <input type="checkbox" name="qualif" [(ngModel)]="quali2" #tquali2="ngModel" checked> PostGraduation<br>
+
+
+<div *ngIf="tquali.invalid " >please check box</div>-->
+<!--div *ngEmpty="tquali2.checked.invalid" class="error" >please check box</div>-->
+
+<!-- [(ngModel)]="quali2" #tquali2="ngModel"<div *ngIf="tquali1.touched || tquali2.touched" class="error">please check one</div>-->
+
+ <input type="button" (click)="checking()" value="cal">
+   <button (click)="checking()" >login</button>
+   <button [disabled]="f.invalid" >log in</button>
+
+  <div *ngIf="f.invalid && f.touched" class="error">form is not valid</div>
+  <!--</form>
+
+ <!-- <form #loginForm="ngForm" (ngSubmit)="submit(loginForm)" class="login">
+      <fieldset style="width:200px">
+      <legend>Register Form</legend>
+        <label>Username</label>
+        <input type="text" [(ngModel)]="name" name="name" #tname="ngModel"
+       minlength="3" required/><br>
+       specific validation 
+      <div *ngIf="tname.touched && tname.invalid">
+        <div *ngIf="tname.errors.required"><br>
+          username not entered
+        </div>
+        <div *ngIf="tname.errors.minlength">
+          usernsme needs to have minimum 3 letters
+        </div>
+      </div>
+      <!--<label>Password</label>
+      <input type="text" [(ngModel)]="password" name="password"
+      #tpassword="ngModel" pattern="[a-zA-Z][a-zA-Z0-9]*"/><br>
+      <div *ngIf="tpassword.touched && tpassword.invalid">
+      <div *ngIf="tpassword.errors.required">
+      password not entered
+      </div><br>
+      <div ngIf="tpassword.errors.pattern"><br>
+        password does not match with the pattern
+      </div><br>
+      </div>
+
+      
+      Comments:<textarea name="comments" [(ngModel)]="comments"
+      #tcomments="ngModel">
+      </textarea><br>
+      <select>
+        <option *ngFor="let contactMethod of cms"
+        [ngValue]="contactMethod">
+        {{contactMethod}}
+      </option>
+      </select><br>
+      <input type="checkbox" name="iSubscribed" [(ngModel)]="iSubscribed"
+      #tiSubscribed="ngModel"/>Subscribe the mailing list<br>
+      <button type="submit">Submit</button>
+      </fieldset>
+      </form>
+      <h3>Form Values:{{loginForm.value|json}}</h3>-->

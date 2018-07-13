@@ -1,0 +1,22 @@
+<p>
+  validation works!
+</p>
+<form #f="ngForm" (ngSubmit)="login(f)">
+  User Name:
+<input type="text" class="error" name="userName" [(ngModel)]="userName" #tuserName="ngModel" required minlength="3"/>
+<br>
+<div *ngIf="tuserName.touched && tuserName.invalid "class="error">name is not valid</div>
+Password:
+<input type="password" class="error" name="pwd" [(ngModel)]="pwd" #tuserPwd="ngModel" required minlength="3"/>
+<br>
+
+Confirm Password:<input type="password" class="error" name="cpwd" [(ngModel)]="cpwd" #tusercpwd="ngModel" required minlength="3"/>
+<div *ngIf=" tuserPwd.value!==tusercpwd.value">Password not matching</div><br>
+<button>login</button>
+<div *ngIf="f.invalid "class="error">form is not valid</div>
+</form>
+<!--<h2>Modified:{{tuserName.dirty}}</h2>
+<h2>Modified:{{tuserName.pristine}}</h2>
+<h2>Modified:{{tuserName.valid}}</h2>
+<h2>  {{tuserName.invalid}}
+</h2>-->
