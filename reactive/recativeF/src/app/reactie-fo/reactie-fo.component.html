@@ -1,0 +1,28 @@
+<p>
+  reactie-fo works!
+</p>
+<form [formGroup]="loginForm" (ngSubmit)="send()">
+  <fieldSet style="width:100px">
+    user name:<input formControlName="name"/><br>
+    
+    <div *ngIf="loginForm.get('name').invalid"> 
+        <div *ngIf="loginForm.get('name').errors.reqiured">reqiured </div>
+        <div *ngIf="loginForm.get('name').errors.minlength">not matching </div>
+   
+  </div>
+    password :<input formControlName="paswd"/><br>
+
+    <div *ngIf="loginForm.get('paswd').invalid"> 
+        <div *ngIf="loginForm.get('paswd').errors.reqiured">reqiured </div>
+        <div *ngIf="loginForm.get('paswd').errors.pattern">not matching </div>
+   
+  </div>
+     url:<input formControlName="url"/><br>
+     <div *ngIf="loginForm.get('url').invalid"> 
+      <div *ngIf="loginForm.get('url').errors.reqiured">reqiured </div>
+      <div *ngIf="loginForm.get('url').errors.inValidUrl">not matching </div>
+ 
+</div>
+    <button type="submit" [disabled]="loginForm.invalid">login</button>
+  </fieldSet>
+</form>
