@@ -31,7 +31,7 @@ http.createServer(function(req,res){
             console.log("data");
         });
         req.on("end",function(){
-            var obj=qs.parse(body);
+            var obj=JSON.parse(body);
             
             var eid=parseFloat(obj.eid);
             //var ename=obj.ename;
@@ -63,7 +63,8 @@ http.createServer(function(req,res){
                     console.log(result[0].eId);
                     console.log(result[0].eName);
                     var eId1 = result[0].eId;
-                    res.end(`
+                 res.end(JSON.stringify(result));
+                     /* res.end(`
                         <!DOCTYPE html>
                         <html>
                         <head>
@@ -75,7 +76,7 @@ http.createServer(function(req,res){
                        <p> basic pay ${result[0].basicPay}</p>
                        <p> net pay is ${result[0].netPay}</p>
                         </body>
-                        </html>`);
+                        </html>`);*/
                       
                   }
          
