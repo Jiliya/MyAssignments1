@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/angular.min.js" ></script>
+<script type="text/javascript">
+var app=angular.module("customFilterApp",[]);
+app.controller("customFilterCtrl",function($scope){	
+$scope.names;
+
+});
+app.filter('convertUpper',function(){
+	return function(names){
+		
+
+// Split string by whitespace character
+   var splitString = names.split("-");
+   var ener=splitString.join()
+///,/g
+    var splitString1 = ener.replace(/,/g,'\t');
+      return  splitString1
+
+	};
+});
+</script>
+</head>
+<body ng-App="customFilterApp" ng-controller="customFilterCtrl">
+	<p>
+	Enter the number
+	<input type="text" ng-model="names">
+		{{names|convertUpper}}
+	</p>
+</body>
+</html>

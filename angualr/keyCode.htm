@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html >
+	<head>
+	<style>
+	body
+	{
+		background-color: lightblue;
+	 color: black;
+	 font-style: italic;
+	 font-weight: bold;
+
+	}
+   </style>
+		<script src="js\angular.min.js"> </script>
+		<script type="text/javascript" src="exterlArrayofstu.js"></script>	
+	</head>
+	<body ng-App="myApp" ng-controller="myCtrl">
+
+		<input type="text" ng-keydown="myFunc($event)"/>
+
+		
+		<p>
+		keyCode:
+		
+		{{keyCode}}
+	</p>
+<script >
+	var app=angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope)
+	{
+		$scope.myFunc=function(e)
+		{
+			$scope.keyCode=e.keyCode;
+			
+		}
+	});
+</script>	
+
+	</body>
+</html> 

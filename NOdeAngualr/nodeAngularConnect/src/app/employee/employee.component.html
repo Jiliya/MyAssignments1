@@ -1,0 +1,13 @@
+<p>
+  employee works!
+</p>
+<form #f="ngForm" method="post" (ngSubmit)="submit(f)">
+  <input type="text" name="eid" [(ngModel)]="eid"/>
+
+  <input type="submit" value="Find "/>
+</form>
+
+
+<div *ngFor = "let emp of resData">
+  {{ emp }}
+</div>

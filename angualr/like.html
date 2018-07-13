@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title><script src="js/angular.min.js" ></script>
+	<script >
+		
+var app=angular.module("myModule",[])
+.controller("myController",function($scope)
+{
+	var technologies=[{name:"asp",likes:0,dilikes:0},{name:"java",likes:0,dilikes:0},{name:"c#",likes:0,dilikes:0}]
+
+;
+$scope.technologies=technologies;
+$scope.incLikes=function(technologies)
+{ technologies.likes++;
+	
+}
+$scope.incdisLikes=function(technologies)
+{ technologies.dilikes++;
+}
+});
+
+
+	</script>
+	
+</head>
+</head>
+<body ng-app="myModule">
+	<div ng-controller="myController">
+		<TABLE>
+			<thead><TR>
+				<th>name</th>
+				<th>like</th>
+				<th>dislike</th>
+				<th>like/dislike</th></TR>
+			</thead>
+			<tbody>
+				<tr ng-repeat="tech in technologies">
+					<td>{{tech.name}}</td>
+					<td>{{tech.likes}}</td>
+					<td>{{tech.dilikes}}</td>
+					<td><input type="button" value="like" ng-click="incLikes(tech)">
+						<input type="button" value="dislike" ng-click="incdisLikes(tech)"></td>
+			</tbody>
+
+
+			</TABLE>
+
+		</div>
+</body>
+</html>

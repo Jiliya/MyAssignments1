@@ -1,0 +1,8 @@
+<p>
+  sample works!
+</p>
+<form #f="ngForm" method="post" (ngSubmit)="submit(f)">
+  <input type="text" name="fahren" [(ngModel)]="fahren"/>
+  <input type="text"  name="celcius" [(ngModel)]="celcius">
+  <input type="submit" value="Find Celcius"/>
+</form>

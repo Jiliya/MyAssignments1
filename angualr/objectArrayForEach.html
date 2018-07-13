@@ -1,0 +1,53 @@
+
+<!DOCTYPE  html>
+<html>
+<head>
+	<style>
+	table,tr,td{
+		border:1px solid #006666;
+	}
+	th
+	{
+		border:1px solid #660033;
+	}
+</style>
+<script src="js/angular.min.js">
+</script>
+</head>
+<body ng-App="" ng-init="employee=[{empId:'1001',empName:'ram',basicpay:1000},{empId:'1002',empName:'jia',basicpay:1000}]"/>
+
+<!--<div  ng-repeat="emp in employee">
+	{{emp}}
+</div>-->
+
+
+
+<table align="center">
+
+	<tr>
+		<th>
+			emplyee id
+		</th>
+		<th>
+			employee name
+		</th>
+		<th>
+			basic pay
+		</th>
+	</tr>
+
+	<tr  ng-repeat="emp in employee| orderBy:">
+		<td>{{emp.empId}}
+		</td>
+		<td>{{emp.empName}}
+		</td>
+		<td>{{emp.basicpay}}
+		</td>
+	</tr>
+
+	
+	</table>
+
+<body>
+</html>
+
